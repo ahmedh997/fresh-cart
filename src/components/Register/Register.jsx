@@ -12,7 +12,7 @@ import { UserContext } from '../../Context/UserContext';
 
 export default function Register() {
 
-    let {userLogin , setUserLogin} = useContext(UserContext)
+    let { userLogin, setUserLogin } = useContext(UserContext);
 
     let navigate = useNavigate();
 
@@ -24,7 +24,7 @@ export default function Register() {
         rePassword: Yup.string().oneOf([Yup.ref('password')], "password and rePassword does not match").required('Re-password is required'),
     });
 
-    const [apiError, setapiError] = useState(''); 
+    const [apiError, setapiError] = useState('');
     const [isLoading, setisLoading] = useState(false);
 
     function handleRegister(formValues) {
@@ -32,13 +32,13 @@ export default function Register() {
         axios.post(`https://ecommerce.routemisr.com/api/v1/auth/signup`, formValues)
             .then((x) => {
                 setisLoading(false);
-                if(x.data.message == "success"){
-                    localStorage.setItem('userToken', x.data.token)
-                    setUserLogin(x.data.token)
+                if (x.data.message == "success") {
+                    localStorage.setItem('userToken', x.data.token);
+                    setUserLogin(x.data.token);
                     console.log(x.data.token);
-                    navigate('/login')
+                    navigate('/login');
                 }
-              
+
 
             })
             .catch((apiResponse) => {
@@ -46,7 +46,7 @@ export default function Register() {
                 setapiError(apiResponse?.response?.data?.message);
                 console.log(apiResponse?.response?.data?.message);
             });
-    
+
 
     }
 
@@ -63,7 +63,7 @@ export default function Register() {
     });
 
     return <>
-        <div className='py-6 max-w-lg mx-auto '>
+        <div className='py-6 max-w-lg mx-auto w-[90%]'>
 
             {apiError ? <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 w-full" role="alert">
                 {apiError}

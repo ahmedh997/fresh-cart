@@ -103,16 +103,16 @@ export default function ProductDetails() {
     return <>
 
         <div className="row items-center w-[90%] m-auto">
-            <div className="w-1/4">
-                {/* <img className='w-full' src={product?.imageCover} alt="Product image" /> */}
+            <div className="w-full md:w-1/4 my-4">
+                
                 <Slider {...settings}>
                     {product?.images.map((src) => <img src={src} className='w-full p-3' />)}
                 </Slider>
             </div>
-            <div className="w-3/4 text-left p-4">
-                <h3 className='text-black font-bold text-2xl capitalize'>{product?.title}</h3>
+            <div className="w-3/4 m-auto md:m-0 md:text-left p-4">
+                <h3 className='text-black font-bold text-3xl capitalize'>{product?.title}</h3>
                 <h4 className='text-gray-600 my-4'>{product?.description}</h4>
-                <h4 className='text-gray-600 my-4'>{product?.category.name}</h4>
+                <h4 className='text-emerald-600 my-4'>{product?.category.name}</h4>
                 <div className="price-rating flex justify-between p-3">
                     <span className='text-black'>{product?.price}EGP</span>
                     <span className='text-black'><i className='fas fa-star text-yellow-400'></i> {product?.ratingsAverage}</span>
@@ -129,13 +129,13 @@ export default function ProductDetails() {
 
         <div className="row w-[90%] m-auto">
             {relatedProduct.length > 0 ? relatedProduct.map((product) => (
-                <div key={product.id} className='w-1/6 mt-5 shadow-lg mx-5 border-2 bg-white rounded-lg hover:border-2 hover:shadow-lg hover:transition-all hover:duration-300 hover:delay-100 ease-in-out hover:scale-105'>
+                <div key={product.id} className='w-full md:w-1/4 lg:w-1/5 xl:w-1/6 mt-5 shadow-lg mx-5 md:mx-0 border-2 md:border-0 md:shadow-none bg-white rounded-lg hover:border-2 hover:shadow-lg hover:transition-all hover:duration-300 hover:delay-100 ease-in-out hover:scale-105'>
                     <div className="product p-5 group overflow-hidden ">
-                        <i onClick={() => addProductToWishlist(product.id)} className='cursor-pointer fas fa-heart text-emerald-600 text-lg opacity-0 translate-x-20 group-hover:opacity-100 group-hover:translate-x-[85px] transition-all'></i>
+                        <i onClick={() => addProductToWishlist(product.id)} className='cursor-pointer fas fa-heart text-emerald-600 text-lg opacity-0 translate-x-36 group-hover:opacity-100 group-hover:translate-x-[10rem] md:group-hover:translate-x-[65px] lg:group-hover:translate-x-[70px] transition-all '></i>
                         <Link to={`/productdetails/${product.id}/${product.category.name}`}>
-                            <img className=' w-[200px] h-[200px] object-cover' src={product.imageCover} alt="Product image" />
-                            <h3 className='text-emerald-500 mt-2'>{product.category.name}</h3>
-                            <h3 className='text-black mb-3 font-semibold'>{product.title.split(' ').slice(0, 2).join(' ')}</h3>
+                            <img className=' w-[200px] h-[200px] object-cover m-auto' src={product.imageCover} alt="Product image" />
+                            <h3 className='text-emerald-500 mt-2 font-light'>{product.category.name}</h3>
+                            <h3 className='text-black text-2xl mb-3 font-bold'>{product.title.split(' ').slice(0, 2).join(' ')}</h3>
                             <hr />
                             <div className='text-black price-rating flex justify-between p-3'>
                                 <span>{product.price}EGP</span>

@@ -11,13 +11,13 @@ import { WishlistContext } from '../../Context/WishlistContext';
 
 export default function Navbar() {
 
-    
+
 
     let { userLogin, setUserLogin } = useContext(UserContext);
 
-    let {numberItems} = useContext(CartContext)
+    let { numberItems } = useContext(CartContext);
 
-    let {numberOfItems} = useContext(WishlistContext)
+    let { numberOfItems } = useContext(WishlistContext);
 
 
     let navigate = useNavigate();
@@ -31,11 +31,11 @@ export default function Navbar() {
     return <>
         <nav className='bg-gray-100 fixed top-0 left-0 right-0 z-50 border-gray-200 px-4'>
             <div className="flex-wrap py-4 mx-auto flex justify-center lg:justify-between items-center max-w-screen-xl">
-
+                <Link className='w-[12rem] my-3 md:my-2' to={''}><img src={logo} alt="logo fresh cart" /></Link>
                 <div className="left-sec flex justify-between gap-5">
-                    <Link to={''}><img src={logo} width={'120px'} alt="logo fresh cart" /></Link>
+
                     {userLogin !== null ? <>
-                        <ul className='flex justify-around m-0 gap-4 items-center'>
+                        <ul className='flex justify-around m-0 gap-4 items-center mb-3 md:mb-0'>
                             <li className='nav-links text-md font-normal'><NavLink className='text-slate-600' to={'/'}>Home</NavLink> </li>
                             <li className='nav-links text-md font-normal'><NavLink className='text-slate-600' to={'/products'}>Products</NavLink> </li>
                             <li className='nav-links text-md font-normal'><NavLink className='text-slate-600' to={'/categories'}>Categories</NavLink> </li>
@@ -50,7 +50,7 @@ export default function Navbar() {
                                 <i className='fas fa-cart-shopping text-slate-600 mx-3 fa-md'></i>
                                 <span className='absolute text-[12px] text-white top-[-7px] right-[-5px] bg-emerald-600 size-5 text-center rounded-full'>{numberItems}</span>
                             </Link>
-                            
+
                         </ul>
                     </> : null}
                 </div>

@@ -24,7 +24,7 @@ export default function Categories() {
 
 
 
-        <div className="flex justify-evenly items-center flex-wrap gap-3">
+        <div className="flex justify-evenly items-center flex-wrap gap-3 mt-9">
             {categories.map((category) =>
 
 

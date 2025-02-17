@@ -27,18 +27,18 @@ export default function MainSlider() {
         }, []);
     return <>
         <div className="row my-5">
-            <div className="w-3/4">
+            <div className="w-full md:w-3/4">
 
                 <Slider {...settings}>
-                    <img src={slider1} className='w-full h-[400px] object-cover' alt="Slider Image" />
-                    <img src={slider4} className='w-full h-[400px] object-cover' alt="Slider Image" />
-                    <img src={slider5} className='w-full h-[400px] object-cover' alt="Slider Image" />
+                    <img src={slider1} className='w-full md:h-[400px] object-cover' alt="Slider Image" />
+                    <img src={slider1} className='w-full md:h-[400px] object-cover' alt="Slider Image" />
+                    <img src={slider1} className='w-full md:h-[400px] object-cover' alt="Slider Image" />
                 </Slider>
 
             </div>
-            <div className="w-1/4">
-                <img src={slider2} className='w-full h-[200px] object-cover' alt="Slider Image" />
-                <img src={slider3} className='w-full h-[200px] object-cover' alt="Slider Image" />
+            <div className="w-1/2 md:w-1/4 flex md:block">
+                <img src={slider2} className='w-full md:h-[200px] object-cover' alt="Slider Image" />
+                <img src={slider3} className='w-full md:h-[200px] object-cover' alt="Slider Image" />
             </div>
         </div>
 

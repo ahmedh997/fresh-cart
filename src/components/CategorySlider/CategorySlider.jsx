@@ -24,10 +24,36 @@ export default function CategorySlider() {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 7,
+        slidesToShow: 6,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 1500,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
     };
 
     return <>
@@ -37,8 +63,8 @@ export default function CategorySlider() {
         <Slider {...settings}>
 
             {categories.map((category) => <div key={category._id}>
-                <img src={category.image} className='w-full h-[200px] object-cover' alt="Category Image" />
-                <h4 className='my-3 text-slate-700'>{category.name}</h4>
+                <img src={category.image} className='size-28 md:w-full md:h-[250px] object-cover' alt="Category Image" />
+                <h4 className='m-3 text-slate-700'>{category.name}</h4>
             </div>
             )}
 

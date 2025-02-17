@@ -38,7 +38,7 @@ const [loading, setloading] = useState(false);
 
 
     return <>
-        <div className='py-6 max-w-lg mx-auto'>
+        <div className='py-6 max-w-lg mx-auto w-[90%]'>
 
             
 

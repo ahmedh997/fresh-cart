@@ -56,7 +56,7 @@ export default function Login() {
     });
 
     return <>
-        <div className='py-6 max-w-lg mx-auto'>
+        <div className='py-6 max-w-lg mx-auto w-[90%]'>
 
             {apiError ? <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 w-full" role="alert">
                 {apiError}
