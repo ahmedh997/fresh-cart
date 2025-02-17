@@ -119,11 +119,11 @@ export default function Register() {
 
 
                 <div className='flex items-center'>
-                    <button type="submit" className="text-white bg-emerald-600 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm w-40 px-5 py-2.5 text-center">
+                    <button type="submit" className="text-white bg-emerald-600 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">
 
                         {isLoading ? <i className='fas fa-spinner fa-spin'></i> : "Submit"}
                     </button>
-                    <p className='text-sm pl-4 text-black'>Already have account? <span className='font-bold'><Link className='underline' to={'/login'}>Login</Link></span></p>
+                    <p className='text-sm mt-4 text-black'>Already have account? <span className='font-bold'><Link className='underline' to={'/login'}>Login</Link></span></p>
                 </div>
             </form>
 
