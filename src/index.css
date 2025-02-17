@@ -146,13 +146,3 @@ button:focus-visible {
 }
 
 
-.product .btn{
-  transform: translateY(30%);
-  opacity: 0;
-  transition: all 0.3s;
-}
-
-.product:hover .btn{
-  opacity: 1;
-  transform: translateY(0);
-}

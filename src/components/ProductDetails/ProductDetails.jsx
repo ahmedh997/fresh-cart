@@ -39,7 +39,7 @@ export default function ProductDetails() {
     async function addProductToWishlist(productId) {
 
         setnumberOfItems(numberOfItems + 1);
-
+        setselectedWishlist(productId);
         let res = await addToWishlist(productId);
         if (res.data.status === 'success') {
             toast.success('Product Added Successfully To Your Wishlist');
@@ -60,6 +60,7 @@ export default function ProductDetails() {
     const [product, setproduct] = useState(null);
     const [relatedProduct, setrelatedProduct] = useState([]);
     const [selectedProduct, setselectedProduct] = useState(0);
+    const [selectedWishlist, setselectedWishlist] = useState(0);
     const [loading, setloading] = useState(false);
 
     var settings = {
@@ -104,12 +105,14 @@ export default function ProductDetails() {
 
         <div className="row items-center w-[90%] m-auto">
             <div className="w-full md:w-1/4 my-4">
-                
+                 
                 <Slider {...settings}>
                     {product?.images.map((src) => <img src={src} className='w-full p-3' />)}
                 </Slider>
             </div>
-            <div className="w-3/4 m-auto md:m-0 md:text-left p-4">
+            
+            <div className="md:w-3/4 m-auto md:m-0 md:text-left p-4 relative">
+                 
                 <h3 className='text-black font-bold text-3xl capitalize'>{product?.title}</h3>
                 <h4 className='text-gray-600 my-4'>{product?.description}</h4>
                 <h4 className='text-emerald-600 my-4'>{product?.category.name}</h4>
@@ -120,6 +123,9 @@ export default function ProductDetails() {
                 <button onClick={() => addProductToCart(product._id)} className='btn bg-emerald-600 text-white rounded-xl px-5 py-2 w-full'>
                     {loading && selectedProduct == product._id ? <i className='fas fa-spinner fa-spin'></i> : "Add to Cart"}
                 </button>
+                <button onClick={() => addProductToWishlist(product._id)} className='btn bg-yellow-600 text-white rounded-xl px-5 py-2 w-full my-3'>
+                     Add to wishlist
+                </button>
 
             </div>
         </div>
@@ -129,9 +135,9 @@ export default function ProductDetails() {
 
         <div className="row w-[90%] m-auto">
             {relatedProduct.length > 0 ? relatedProduct.map((product) => (
-                <div key={product.id} className='w-full md:w-1/4 lg:w-1/5 xl:w-1/6 mt-5 shadow-lg mx-5 md:mx-0 border-2 md:border-0 md:shadow-none bg-white rounded-lg hover:border-2 hover:shadow-lg hover:transition-all hover:duration-300 hover:delay-100 ease-in-out hover:scale-105'>
+                <div key={product.id} className='w-full md:w-1/4 lg:w-1/5 xl:w-1/6 mt-5 shadow-lg mx-5 md:mx-0 border-2 md:border-0 md:shadow-none bg-white rounded-lg'>
                     <div className="product p-5 group overflow-hidden ">
-                        <i onClick={() => addProductToWishlist(product.id)} className='cursor-pointer fas fa-heart text-emerald-600 text-lg opacity-0 translate-x-36 group-hover:opacity-100 group-hover:translate-x-[10rem] md:group-hover:translate-x-[65px] lg:group-hover:translate-x-[70px] transition-all '></i>
+                        
                         <Link to={`/productdetails/${product.id}/${product.category.name}`}>
                             <img className=' w-[200px] h-[200px] object-cover m-auto' src={product.imageCover} alt="Product image" />
                             <h3 className='text-emerald-500 mt-2 font-light'>{product.category.name}</h3>
@@ -144,6 +150,9 @@ export default function ProductDetails() {
                         </Link>
                         <button onClick={() => addProductToCart(product.id)} className='btn bg-emerald-600 text-white rounded-xl px-5 py-2 w-full'>
                             {loading && selectedProduct == product.id ? <i className='fas fa-spinner fa-spin'></i> : "Add to Cart"}
+                        </button>
+                        <button onClick={() => addProductToWishlist(product.id)} className='btn bg-yellow-600 text-white rounded-xl p-2 w-full my-3'>
+                             Add To Wishlist
                         </button>
 
                     </div>

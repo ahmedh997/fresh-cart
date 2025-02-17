@@ -35,7 +35,7 @@ export default function Navbar() {
                 <div className="left-sec flex justify-between gap-5">
 
                     {userLogin !== null ? <>
-                        <ul className='flex justify-around m-0 gap-4 items-center mb-3 md:mb-0'>
+                        <ul className='flex justify-around m-0 mx-2 gap-4 items-center mb-3 md:mb-0'>
                             <li className='nav-links text-md font-normal'><NavLink className='text-slate-600' to={'/'}>Home</NavLink> </li>
                             <li className='nav-links text-md font-normal'><NavLink className='text-slate-600' to={'/products'}>Products</NavLink> </li>
                             <li className='nav-links text-md font-normal'><NavLink className='text-slate-600' to={'/categories'}>Categories</NavLink> </li>

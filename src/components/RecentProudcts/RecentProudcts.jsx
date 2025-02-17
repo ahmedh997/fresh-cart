@@ -16,7 +16,7 @@ import { WishlistContext } from '../../Context/WishlistContext';
 
 export default function RecentProudcts() {
 
-    let {addToWishlist, numberOfItems, setnumberOfItems} = useContext(WishlistContext)
+    let { addToWishlist, numberOfItems, setnumberOfItems } = useContext(WishlistContext);
     let { addToCart, setnumberItems, numberItems } = useContext(CartContext);
     let { data, isLoading, isError, error } = useProducts();
     const [loading, setloading] = useState(false);
@@ -25,7 +25,7 @@ export default function RecentProudcts() {
     async function addProductToCart(productId) {
         setselectedProduct(productId);
         setloading(true);
-        setnumberItems(numberItems + 1)
+        setnumberItems(numberItems + 1);
         let res = await addToCart(productId);
         if (res.data.status === 'success') {
             toast.success(res.data.message);
@@ -40,7 +40,7 @@ export default function RecentProudcts() {
     }
     async function addProductToWishlist(productId) {
 
-        setnumberOfItems(numberOfItems + 1)
+        setnumberOfItems(numberOfItems + 1);
 
         let res = await addToWishlist(productId);
         if (res.data.status === 'success') {
@@ -86,7 +86,6 @@ export default function RecentProudcts() {
                 {data.map((product) => (
                     <div key={product.id} className='w-full md:w-1/4 lg:w-1/5 xl:w-1/6 mt-5 shadow-lg mx-5 md:mx-0 border-2 md:border-0 md:shadow-none bg-white rounded-lg hover:border-2 hover:shadow-lg hover:transition-all hover:duration-300 hover:delay-100 ease-in-out hover:scale-105'>
                         <div className="product p-5 group overflow-hidden">
-                            <i onClick={() => addProductToWishlist(product.id)} className='cursor-pointer fas fa-heart text-emerald-600 text-lg opacity-0 translate-x-36 group-hover:opacity-100 group-hover:translate-x-[10rem] md:group-hover:translate-x-[65px] lg:group-hover:translate-x-[70px] transition-all '></i>
                             <Link to={`/productdetails/${product.id}/${product.category.name}`}>
                                 <img className='w-[200px] h-[200px] object-cover m-auto' src={product.imageCover} alt="Product image" />
                                 <h3 className='text-emerald-500 mt-2'>{product.category.name}</h3>
@@ -99,6 +98,9 @@ export default function RecentProudcts() {
                             </Link>
                             <button onClick={() => addProductToCart(product.id)} className='btn bg-emerald-600 text-white rounded-xl px-5 py-2 w-full'>
                                 {loading && selectedProduct == product.id ? <i className='fas fa-spinner fa-spin'></i> : <span><i className='fas fa-shopping-cart'></i> Add to Cart</span>}
+                            </button>
+                            <button onClick={() => addProductToWishlist(product.id)} className='btn bg-yellow-600 text-white rounded-xl p-2 w-full my-3'>
+                                Add To Wishlist
                             </button>
 
                         </div>
