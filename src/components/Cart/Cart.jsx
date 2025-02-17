@@ -176,7 +176,7 @@ export default function Cart() {
 
             </div>
 
-        </> : <h2 className='text-gray-700 font-bold text-3xl p-44'>Your Cart Is Empty</h2>}
+        </> : <h2 className='text-gray-700 font-bold text-3xl py-44'>Your Cart Is Empty</h2>}
 
 
     </>;
