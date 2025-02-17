@@ -79,7 +79,7 @@ export default function Wishlist() {
     return  <>
     
      {wishlistDetails?.length > 0 ? <>
-                <div className="flex">
+                <div className="flex w-[90%] m-auto">
                     <div className="relative w-full overflow-x-auto shadow-md sm:rounded-lg">
                         <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">

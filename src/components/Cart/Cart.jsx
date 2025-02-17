@@ -62,7 +62,7 @@ export default function Cart() {
         }, []);
     return <>
         {cartDetails?.products.length > 0 ? <>
-            <div className="flex gap-10">
+            <div className="flex gap-10 w-[90%] m-auto">
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
                         <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">

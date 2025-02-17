@@ -9,6 +9,12 @@ export default function Products() {
             setcounter(counter + 1);
         }, []);
     return <>
-        <RecentProudcts />
+
+        <div className='w-[90%] m-auto'>
+
+            <RecentProudcts />
+
+        </div>
+
     </>;
 }

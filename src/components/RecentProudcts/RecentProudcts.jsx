@@ -86,11 +86,12 @@ export default function RecentProudcts() {
                 {data.map((product) => (
                     <div key={product.id} className='w-1/6 mt-5 shadow-lg mx-5 border-2 bg-white rounded-lg hover:border-2 hover:shadow-lg hover:transition-all hover:duration-300 hover:delay-100 ease-in-out hover:scale-105'>
                         <div className="product p-5 group overflow-hidden">
-                            <i onClick={()=> addProductToWishlist(product.id)} className='cursor-pointer fas fa-heart text-emerald-600 text-lg opacity-0 translate-x-20 group-hover:opacity-100 group-hover:translate-x-16 transition-all '></i>
+                            <i onClick={()=> addProductToWishlist(product.id)} className='cursor-pointer fas fa-heart text-emerald-600 text-lg opacity-0 translate-x-20 group-hover:opacity-100 group-hover:translate-x-[85px] transition-all '></i>
                             <Link to={`/productdetails/${product.id}/${product.category.name}`}>
                                 <img className='w-[200px] h-[200px] object-cover' src={product.imageCover} alt="Product image" />
                                 <h3 className='text-emerald-500 mt-2'>{product.category.name}</h3>
                                 <h3 className='text-black mb-3 font-semibold'>{product.title.split(' ').slice(0, 2).join(' ')}</h3>
+                                <hr />
                                 <div className='text-black price-rating flex justify-between p-3'>
                                     <span>{product.price}EGP</span>
                                     <span><i className='fas fa-star text-yellow-400'></i> {product.ratingsAverage}</span>

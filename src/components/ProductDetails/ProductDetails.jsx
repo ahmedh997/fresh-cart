@@ -6,6 +6,7 @@ import Slider from 'react-slick';
 import ClimbingBoxLoader from 'react-spinners/ClimbingBoxLoader';
 import { CartContext } from '../../Context/CartContext';
 import toast from 'react-hot-toast';
+import { WishlistContext } from '../../Context/WishlistContext';
 
 
 
@@ -13,11 +14,15 @@ import toast from 'react-hot-toast';
 
 export default function ProductDetails() {
 
-    let { addToCart } = useContext(CartContext);
+    let { addToCart, setnumberItems, numberItems } = useContext(CartContext);
+
+    let { addToWishlist, numberOfItems, setnumberOfItems } = useContext(WishlistContext);
+
 
     async function addProductToCart(productId) {
         setselectedProduct(productId);
         setloading(true);
+        setnumberItems(numberItems + 1)
         let res = await addToCart(productId);
         if (res.data.status === 'success') {
             toast.success(res.data.message);
@@ -30,6 +35,25 @@ export default function ProductDetails() {
         console.log(res);
 
     }
+
+    async function addProductToWishlist(productId) {
+
+        setnumberOfItems(numberOfItems + 1);
+
+        let res = await addToWishlist(productId);
+        if (res.data.status === 'success') {
+            toast.success('Product Added Successfully To Your Wishlist');
+            setloading(false);
+        }
+        else {
+            toast.error('Something Went Wrong');
+            setloading(false);
+        }
+        console.log(res);
+
+    }
+
+
 
     let { id, category } = useParams();
 
@@ -78,7 +102,7 @@ export default function ProductDetails() {
 
     return <>
 
-        <div className="row items-center">
+        <div className="row items-center w-[90%] m-auto">
             <div className="w-1/4">
                 {/* <img className='w-full' src={product?.imageCover} alt="Product image" /> */}
                 <Slider {...settings}>
@@ -103,11 +127,11 @@ export default function ProductDetails() {
 
         <h2 className='font-bold text-2xl text-black'>Related Products</h2>
 
-        <div className="row">
+        <div className="row w-[90%] m-auto">
             {relatedProduct.length > 0 ? relatedProduct.map((product) => (
                 <div key={product.id} className='w-1/6 mt-5 shadow-lg mx-5 border-2 bg-white rounded-lg hover:border-2 hover:shadow-lg hover:transition-all hover:duration-300 hover:delay-100 ease-in-out hover:scale-105'>
                     <div className="product p-5 group overflow-hidden ">
-                    <i className='fas fa-heart text-emerald-600 text-lg opacity-0 translate-x-20 group-hover:opacity-100 group-hover:translate-x-16 transition-all '></i>
+                        <i onClick={() => addProductToWishlist(product.id)} className='cursor-pointer fas fa-heart text-emerald-600 text-lg opacity-0 translate-x-20 group-hover:opacity-100 group-hover:translate-x-[85px] transition-all'></i>
                         <Link to={`/productdetails/${product.id}/${product.category.name}`}>
                             <img className=' w-[200px] h-[200px] object-cover' src={product.imageCover} alt="Product image" />
                             <h3 className='text-emerald-500 mt-2'>{product.category.name}</h3>

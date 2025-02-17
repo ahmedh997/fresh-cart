@@ -43,12 +43,12 @@ export default function Navbar() {
                             <Link to={'/wishlist'} className='relative'>
 
                                 <i className="fas fa-heart text-slate-600 mx-3 fa-md"> </i>
-                                <span className='absolute text-[12px] text-white top-[-7px] right-[-5px] bg-emerald-600 size-5 rounded-full'>{numberOfItems}</span>
+                                <span className='absolute text-[12px] text-white top-[-7px] right-[-5px] bg-emerald-600 size-5 text-center rounded-full'>{numberOfItems}</span>
                             </Link>
                             <Link to={'/cart'} className='relative'>
 
                                 <i className='fas fa-cart-shopping text-slate-600 mx-3 fa-md'></i>
-                                <span className='absolute text-[12px] text-white top-[-7px] right-[-5px] bg-emerald-600 size-5 rounded-full'>{numberItems}</span>
+                                <span className='absolute text-[12px] text-white top-[-7px] right-[-5px] bg-emerald-600 size-5 text-center rounded-full'>{numberItems}</span>
                             </Link>
                             
                         </ul>

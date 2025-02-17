@@ -12,11 +12,17 @@ export default function Home() {
   return (
 
     <>
-    
-      <MainSlider />
-      <CategorySlider />
 
-      <RecentProudcts />
+      
+      <div className='w-[90%] m-auto'>
+
+        <MainSlider />
+        <CategorySlider />
+
+        <RecentProudcts />
+
+      </div>
+      
 
     </>
 

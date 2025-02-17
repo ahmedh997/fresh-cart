@@ -17,7 +17,7 @@ export default function Register() {
     let navigate = useNavigate();
 
     let validationSchema = Yup.object().shape({
-        name: Yup.string().min(3, 'name min length is 3 chars').max(10, 'name max length is 10 chars').required('Name is required'),
+        name: Yup.string().min(3, 'name min length is 3 chars').max(20, 'name max length is 20 chars').required('Name is required'),
         email: Yup.string().email("Email is invalid").required('Email is required'),
         phone: Yup.string().matches(/^01[0125][0-9]{8}$/, "Phone must be valid Egyptian number").required('Phone is required'),
         password: Yup.string().matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/, "Your password must include at least one lowercase letter (a-z), one uppercase letter (A-Z), one number (0-9), and be at least 8 characters long.").required('Password is required'),
