@@ -33,9 +33,7 @@ export default function Register() {
             .then((x) => {
                 setisLoading(false);
                 if (x.data.message == "success") {
-                    localStorage.setItem('userToken', x.data.token);
-                    setUserLogin(x.data.token);
-                    console.log(x.data.token);
+                    
                     navigate('/login');
                 }
 

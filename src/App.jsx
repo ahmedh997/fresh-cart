@@ -21,6 +21,9 @@ import Cart from './components/Cart/Cart';
 import Allorders from './components/Allorders/Allorders';
 import Wishlist from './components/Wishlist/Wishlist';
 import WishlistContext  from './Context/WishlistContext';
+import ForgetPassword from './components/ForgetPassword/ForgetPassword';
+import VerifyCode from './components/VerifyCode/VerifyCode';
+import ChangeMyPassword from './components/ChangeMyPassword/ChangeMyPassword';
 
 
 
@@ -31,6 +34,8 @@ let router = createBrowserRouter([
   {
     path: '', element: <Layout />, children: [
       { index: true, element: <ProtectedRoute><Home /></ProtectedRoute> },
+      { path: 'home', element: <ProtectedRoute><Home /></ProtectedRoute> },
+      { path: 'changemypassword', element: <ChangeMyPassword /> },
       { path: 'register', element: <Register /> },
       { path: 'login', element: <Login /> },
       { path: 'brands', element: <ProtectedRoute><Brands /> </ProtectedRoute> },
@@ -41,6 +46,8 @@ let router = createBrowserRouter([
       { path: 'checkout', element: <ProtectedRoute><Checkout /></ProtectedRoute> },
       { path: 'allorders', element: <ProtectedRoute><Allorders /></ProtectedRoute> },
       { path: 'wishlist', element: <ProtectedRoute><Wishlist /></ProtectedRoute> },
+      { path: 'resetpassword', element: <ForgetPassword /> },
+      { path: 'verifycode', element: <VerifyCode /> },
       { path: '*', element: <NotFound /> },
     ]
   }
