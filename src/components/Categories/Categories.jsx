@@ -28,8 +28,8 @@ export default function Categories() {
             {categories.map((category) =>
 
 
-                <div key={category._id}>
-                    <img src={category.image} className='w-full h-[200px] object-cover' alt="Category Image" />
+                <div key={category._id} className='m-4'>
+                    <img src={category.image} className='w-full m:h-[200px] object-cover' alt="Category Image" />
                     <h4 className='my-3 text-slate-700'>{category.name}</h4>
 
                 </div>

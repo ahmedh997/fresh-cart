@@ -39,9 +39,9 @@ export default function RecentProudcts() {
 
     }
     async function addProductToWishlist(productId) {
-
+        setselectedProduct(productId);
         setnumberOfItems(numberOfItems + 1);
-
+        setloading(true);
         let res = await addToWishlist(productId);
         if (res.data.status === 'success') {
             toast.success('Product Added Successfully To Your Wishlist');
@@ -100,7 +100,7 @@ export default function RecentProudcts() {
                                 {loading && selectedProduct == product.id ? <i className='fas fa-spinner fa-spin'></i> : <span> Add to Cart</span>}
                             </button>
                             <button onClick={() => addProductToWishlist(product.id)} className='btn bg-yellow-600 text-white rounded-xl p-2 w-full my-3'>
-                                Add To Wishlist
+                                {loading && selectedProduct == product.id ? <i className='fas fa-spinner fa-spin'></i> : <span> Add to Wishlist</span>}
                             </button>
 
                         </div>

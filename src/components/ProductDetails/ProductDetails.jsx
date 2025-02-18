@@ -141,7 +141,7 @@ export default function ProductDetails() {
                         <Link to={`/productdetails/${product.id}/${product.category.name}`}>
                             <img className=' w-[200px] h-[200px] object-cover m-auto' src={product.imageCover} alt="Product image" />
                             <h3 className='text-emerald-500 mt-2 font-light'>{product.category.name}</h3>
-                            <h3 className='text-black text-2xl mb-3 font-bold'>{product.title.split(' ').slice(0, 2).join(' ')}</h3>
+                            <h3 className='text-black mb-3 font-semibold'>{product.title.split(' ').slice(0, 2).join(' ')}</h3>
                             <hr />
                             <div className='text-black price-rating flex justify-between p-3'>
                                 <span>{product.price}EGP</span>

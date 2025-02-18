@@ -115,7 +115,7 @@ export default function Cart() {
                                     {product.price * product.count} EGP
                                 </td>
                                 <td className="px-6 py-4">
-                                    <a onClick={() => deleteCart(product.product.id)} href="#" className="flex gap-1 justify-center items-center font-medium text-red-600"><i class="fa-solid fa-trash-can"></i> Remove</a>
+                                    <a onClick={() => deleteCart(product.product.id)} href="#" className="flex gap-1 justify-center items-center font-medium text-red-600"><i className="fa-solid fa-trash-can"></i> Remove</a>
                                 </td>
                             </tr>
 

@@ -114,7 +114,7 @@ export default function Wishlist() {
                                         <button onClick={() => addProductToCart(product.id)} className='btn bg-emerald-600 text-white rounded-xl p-2 w-full my-5'>
                                             {loading && selectedProduct == product.id ? <i className='fas fa-spinner fa-spin'></i> : <span><i className='fas fa-shopping-cart'></i> Add to Cart</span>}
                                         </button>
-                                        <a onClick={() => deleteItemWishlist(product.id)} href="#" className="flex gap-1 justify-center items-center font-medium text-red-600"><i class="fa-solid fa-trash-can"></i> Remove</a>
+                                        <a onClick={() => deleteItemWishlist(product.id)} href="#" className="flex gap-1 justify-center items-center font-medium text-red-600"><i className="fa-solid fa-trash-can"></i> Remove</a>
                                     </td>
                                 </tr>
     

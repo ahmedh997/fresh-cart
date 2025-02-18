@@ -25,7 +25,7 @@ const [loading, setloading] = useState(false);
         },
 
         onSubmit: ()=>
-            handleCheckout(cartId, `http://localhost:5173`)
+            handleCheckout(cartId, `https://fresh-cart-mu-pearl.vercel.app`)
     });
 
     async function handleCheckout(cartId, url) {
