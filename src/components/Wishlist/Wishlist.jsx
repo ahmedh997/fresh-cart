@@ -54,7 +54,7 @@ export default function Wishlist() {
           if (remove.data.status == 'success') {
 
             toast.success(remove.data.message);
-            window.location.href = '/wishlist'
+            window.location.href = '/#/wishlist'
         }
         else {
             toast.error('Something Went Wrong');
