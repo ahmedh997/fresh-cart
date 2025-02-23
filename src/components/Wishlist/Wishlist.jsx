@@ -68,10 +68,8 @@ export default function Wishlist() {
 
     useEffect(() => {
       
-    
-      return () => {
         getUserWishlist()
-      }
+      
     }, [])
     
 
