@@ -62,8 +62,8 @@ export default function Cart() {
         }, []);
     return <>
         {cartDetails?.products.length > 0 ? <>
-            <div className="flex flex-col lg:flex-row w-[90%] m-auto mt-9">
-                <div className="relative overflow-x-auto shadow-md sm:rounded-lg flex flex-wrap">
+            <div className="flex flex-col lg:flex-row w-[90%] gap-5 m-auto mt-9">
+                <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-full flex flex-wrap">
                     <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
                         <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">
                             <tr>
@@ -123,7 +123,7 @@ export default function Cart() {
                         </tbody>
                     </table>
                 </div>
-                <div className="cart-details text-black shadow-md sm:rounded-lg w-96 h-fit  mx-auto">
+                <div className="cart-details text-black shadow-md sm:rounded-lg w-96 h-fit mx-auto">
                     <div className='text-xs text-gray-700 uppercase bg-gray-50 py-3'>
                         <span className='px-16 py-3 font-bold'>Order Summary</span>
                     </div>
