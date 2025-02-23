@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, createHashRouter, RouterProvider } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import Home from './components/Home/Home';
 import Register from './components/Register/Register';
@@ -30,7 +30,7 @@ import ChangeMyPassword from './components/ChangeMyPassword/ChangeMyPassword';
 
 let query = new QueryClient();
 
-let router = createBrowserRouter([
+let router = createHashRouter([
   {
     path: '', element: <Layout />, children: [
       { index: true, element: <ProtectedRoute><Home /></ProtectedRoute> },
