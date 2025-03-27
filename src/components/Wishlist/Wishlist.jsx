@@ -79,7 +79,7 @@ export default function Wishlist() {
 
         {loading ?
 
-            <div className='flex justify-center items-center w-full mt-32'>
+            <div className='flex justify-center items-center w-full mt-32  p-16'>
                 <ClipLoader size={60} color='#059669' />
             </div> :
 

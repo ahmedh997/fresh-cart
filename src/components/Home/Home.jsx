@@ -17,10 +17,10 @@ export default function Home() {
         <MainSlider />
         <CategorySlider />
 
-        <RecentProudcts />
 
       </div>
       
+        <RecentProudcts />  
 
     </>
 

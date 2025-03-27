@@ -35,7 +35,7 @@ export default function Navbar() {
 
 
     return <>
-        <nav className='bg-gray-100 fixed top-0 left-0 right-0 z-50 border-gray-200 px-4'>
+        <nav className='bg-gray-100 fixed top-0 left-0 right-0 z-50 border-gray-200 px-4 border-b-2 '>
             <div className="flex-wrap py-4 mx-auto flex justify-center lg:justify-between items-center max-w-screen-xl">
                 <Link className='w-[12rem] my-3 md:my-2' to={''}><img src={logo} alt="logo fresh cart" /></Link>
                 <div className="left-sec flex justify-between gap-5">

@@ -45,6 +45,7 @@ export default function Cart() {
             setcartDetails(remove.data.data);
             setnumberItems(numberItems - 1);
             toast.success('Product removed Successfully');
+            window.location.href = '/#/cart';
         }
         else {
             toast.error('Something Went Wrong');
@@ -63,14 +64,7 @@ export default function Cart() {
             getCart();
         }, []);
     return <>
-        {loading ?
-
-            <div className='flex justify-center items-center w-full mt-24'>
-                <ClipLoader size={60} color='#059669' />
-            </div> :
-
-
-            cartDetails?.products.length > 0 ? <>
+        {cartDetails?.products.length > 0 ? <>
                 <div className="flex flex-col lg:flex-row w-[90%] gap-5 m-auto mt-9">
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-full flex flex-wrap">
                         <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
@@ -185,7 +179,9 @@ export default function Cart() {
 
                 </div>
 
-            </> : <h2 className='text-gray-700 font-bold text-3xl py-44'>Your Cart Is Empty</h2>}
+        </> : loading ? <div className='flex justify-center items-center w-full mt-32 p-16'>
+                    <ClipLoader size={60} color='#059669' />
+                </div> : <h2 className='text-gray-700 font-bold text-3xl py-44'>Your Cart Is Empty</h2>}
 
 
     </>;

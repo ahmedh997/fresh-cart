@@ -20,7 +20,7 @@ import Checkout from './components/Checkout/Checkout';
 import Cart from './components/Cart/Cart';
 import Allorders from './components/Allorders/Allorders';
 import Wishlist from './components/Wishlist/Wishlist';
-import WishlistContext  from './Context/WishlistContext';
+import WishlistContext from './Context/WishlistContext';
 import ForgetPassword from './components/ForgetPassword/ForgetPassword';
 import VerifyCode from './components/VerifyCode/VerifyCode';
 import ChangeMyPassword from './components/ChangeMyPassword/ChangeMyPassword';
@@ -59,21 +59,23 @@ function App() {
   return <>
 
 
+
+
     <CartContext>
       <WishlistContext>
 
-      <QueryClientProvider client={query}>
+        <QueryClientProvider client={query}>
 
-        <UserContextProvider>
+          <UserContextProvider>
 
             <Toaster position="top-right" />
-          <RouterProvider router={router}>
+            <RouterProvider router={router}>
 
-          </RouterProvider>
-          <ReactQueryDevtools />
-        </UserContextProvider>
+            </RouterProvider>
+            <ReactQueryDevtools />
+          </UserContextProvider>
 
-      </QueryClientProvider>
+        </QueryClientProvider>
 
       </WishlistContext>
 

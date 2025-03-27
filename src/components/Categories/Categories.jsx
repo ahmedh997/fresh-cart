@@ -30,7 +30,7 @@ export default function Categories() {
         <div className="flex justify-evenly items-center flex-wrap gap-3 mt-9">
             {loading ?
 
-                <div className='flex justify-center items-center w-full mt-24'>
+                <div className='flex justify-center items-center w-full mt-24  p-16'>
                     <ClipLoader size={60} color='#059669' />
                 </div>
                 : <>
