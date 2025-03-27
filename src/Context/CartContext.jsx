@@ -10,7 +10,7 @@ export default function CartContextProvider(props) {
     const [cartId, setcartId] = useState(0)
 
 
-    const [numberItems, setnumberItems] = useState(0)
+    const [numberItems, setnumberItems] = useState(null)
 
 
 
@@ -29,8 +29,8 @@ export default function CartContextProvider(props) {
             headers
         })
         .then((res)=> {
-            setnumberItems(res.data.numOfCartItems)
-            setcartId(res.data.data._id)
+            setnumberItems(res?.data?.numOfCartItems)
+            setcartId(res?.data?.data?._id)
             return res
         })   
         .catch((err)=>err)

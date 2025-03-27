@@ -11,7 +11,7 @@ export default function WishlistContextProvider(props) {
     let headers = {token: localStorage.getItem('userToken')};
 
 
-    const [numberOfItems, setnumberOfItems] = useState(0)
+    const [numberOfItems, setnumberOfItems] = useState(null)
 
 
 

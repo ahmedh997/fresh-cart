@@ -21,7 +21,6 @@ const [loading, setloading] = useState(false);
             details: '',
             phone: '',
             city: '',
-
         },
 
         onSubmit: ()=>
@@ -29,10 +28,12 @@ const [loading, setloading] = useState(false);
     });
 
     async function handleCheckout(cartId, url) {
+        setloading(true)
         
      let {data} = await checkOut(cartId, url, formik.values)
-        console.log(data.session.url);
-        window.location.href = data.session.url
+        setloading(false)
+        console.log(data?.session?.url);
+        window.location.href = data?.session?.url
 
     }
 
@@ -72,7 +73,7 @@ const [loading, setloading] = useState(false);
                 <div className='flex items-center'>
                     <button type="submit" className="text-white w-full bg-emerald-600 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
 
-                        Checkout
+                        {loading? <i className='fas fa-spin fa-spinner'></i> :'Checkout'}
                         
                     </button>
                 </div>

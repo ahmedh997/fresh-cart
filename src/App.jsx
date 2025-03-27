@@ -66,7 +66,7 @@ function App() {
 
         <UserContextProvider>
 
-          <Toaster />
+            <Toaster position="top-right" />
           <RouterProvider router={router}>
 
           </RouterProvider>

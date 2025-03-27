@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Style from './Navbar.module.css';
 import logo from '../../assets/images/freshcart-logo.svg';
 import { Link, Links, NavLink, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../Context/UserContext';
@@ -15,9 +14,9 @@ export default function Navbar() {
 
     let { userLogin, setUserLogin } = useContext(UserContext);
 
-    let { numberItems } = useContext(CartContext);
+    let { numberItems, getCartItems } = useContext(CartContext);
 
-    let { numberOfItems } = useContext(WishlistContext);
+    let { numberOfItems, getWishlist } = useContext(WishlistContext);
 
 
     let navigate = useNavigate();
@@ -27,6 +26,13 @@ export default function Navbar() {
         setUserLogin(null);
         navigate('/login');
     }
+
+    useEffect(() => {
+        getCartItems();
+        getWishlist();
+
+    }, []);
+
 
     return <>
         <nav className='bg-gray-100 fixed top-0 left-0 right-0 z-50 border-gray-200 px-4'>
@@ -43,12 +49,12 @@ export default function Navbar() {
                             <Link to={'/wishlist'} className='relative'>
 
                                 <i className="fas fa-heart text-slate-600 mx-3 fa-md"> </i>
-                                <span className='absolute text-[12px] text-white top-[-7px] right-[-5px] bg-emerald-600 size-5 text-center rounded-full'>{numberOfItems}</span>
+                                <span className='absolute text-[12px] text-white top-[-7px] right-[-5px] bg-emerald-600 size-5 text-center rounded-full'>{numberOfItems == null ? <i className='fas fa-spin fa-spinner'></i> : numberOfItems}</span>
                             </Link>
                             <Link to={'/cart'} className='relative'>
 
                                 <i className='fas fa-cart-shopping text-slate-600 mx-3 fa-md'></i>
-                                <span className='absolute text-[12px] text-white top-[-7px] right-[-5px] bg-emerald-600 size-5 text-center rounded-full'>{numberItems}</span>
+                                <span className='absolute text-[12px] text-white top-[-7px] right-[-5px] bg-emerald-600 size-5 text-center rounded-full'>{numberItems == null ? <i className='fas fa-spin fa-spinner'></i> : numberItems}</span>
                             </Link>
 
                         </ul>

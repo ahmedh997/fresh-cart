@@ -20,8 +20,8 @@ export default function RecentProudcts() {
     let { addToCart, setnumberItems, numberItems } = useContext(CartContext);
     let { data, isLoading, isError, error } = useProducts();
     const [loading, setloading] = useState(false);
-    const [loadingWhislist, setloadingWhislist] = useState(false);
     const [selectedProduct, setselectedProduct] = useState(0);
+    const [loadingWhislist, setloadingWhislist] = useState(false);
     const [selectedWhishlistProduct, setselectedWhishlistProduct] = useState(0);
 
     async function addProductToCart(productId) {
@@ -89,7 +89,7 @@ export default function RecentProudcts() {
                     <div key={product?.id} className='w-full md:w-1/4 lg:w-1/5 xl:w-1/6 mt-5 shadow-lg mx-5 md:mx-0 border-2 md:border-0 md:shadow-none bg-white rounded-lg'>
                         <div className="product p-5 group overflow-hidden hover:scale-105 hover:border hover:border-1 hover:rounded-lg hover:bg-slate-50 hover:shadow-md transition-all">
                             <Link to={`/productdetails/${product?.id}/${product?.category?.name}`}>
-                                <img className='size-40 object-cover m-auto' src={product?.imageCover} alt="Product image" />
+                                <img className='size-40 object-cover m-auto group-hover:border-2' src={product?.imageCover} alt="Product image" />
                                 <h3 className='text-emerald-500 mt-2'>{product?.category?.name}</h3>
                                 <h3 className='text-black mb-3 font-semibold'>{product?.title?.split(' ').slice(0, 2).join(' ')}</h3>
                                 <hr />
