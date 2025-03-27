@@ -2,31 +2,31 @@ import React, { useContext, useEffect, useState } from 'react';
 import Style from './Wishlist.module.css';
 import { WishlistContext } from '../../Context/WishlistContext';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
 import { CartContext } from '../../Context/CartContext';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 
 
 export default function Wishlist() {
 
 
-    let {addToCart, setnumberItems, numberItems} = useContext(CartContext);
+    let { addToCart, setnumberItems, numberItems } = useContext(CartContext);
 
 
-    let {getWishlist,deleteWishlist} = useContext(WishlistContext)
+    let { getWishlist, deleteWishlist } = useContext(WishlistContext);
 
-    const [wishlistDetails, setwishlistDetails] = useState(null)
+    const [wishlistDetails, setwishlistDetails] = useState(null);
 
 
 
-    const [loading, setloading] = useState(false);
-    
+    const [loading, setloading] = useState(true);
+
     const [selectedProduct, setselectedProduct] = useState(0);
 
     async function addProductToCart(productId) {
         setselectedProduct(productId);
         setloading(true);
-        setnumberItems(numberItems + 1)
+        setnumberItems(numberItems + 1);
         let res = await addToCart(productId);
         if (res.data.status === 'success') {
             toast.success(res.data.message);
@@ -40,21 +40,22 @@ export default function Wishlist() {
 
     }
 
-    async function getUserWishlist(){
-        let list = await getWishlist()
-        setwishlistDetails(list.data.data)
+    async function getUserWishlist() {
+        let list = await getWishlist();
+        setwishlistDetails(list.data.data);
+        setloading(false);
         console.log(list);
     }
 
 
-    async function deleteItemWishlist(productId){
-        let remove = await deleteWishlist(productId)
+    async function deleteItemWishlist(productId) {
+        let remove = await deleteWishlist(productId);
 
 
-          if (remove.data.status == 'success') {
+        if (remove.data.status == 'success') {
 
             toast.success(remove.data.message);
-            window.location.href = '/#/wishlist'
+            window.location.href = '/#/wishlist';
         }
         else {
             toast.error('Something Went Wrong');
@@ -67,16 +68,22 @@ export default function Wishlist() {
 
 
     useEffect(() => {
-      
-        getUserWishlist()
-      
-    }, [])
-    
+
+        getUserWishlist();
+
+    }, []);
 
 
-    return  <>
-    
-     {wishlistDetails?.length > 0 ? <>
+
+    return <>
+
+        {loading ?
+
+            <div className='flex justify-center items-center w-full mt-32'>
+                <ClipLoader size={60} color='#059669' />
+            </div> :
+
+            wishlistDetails?.length > 0 ? <>
                 <div className="flex w-[90%] m-auto mt-9">
                     <div className="relative w-full overflow-x-auto shadow-md sm:rounded-lg">
                         <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
@@ -115,19 +122,19 @@ export default function Wishlist() {
                                         <a onClick={() => deleteItemWishlist(product.id)} href="#" className="flex gap-1 justify-center items-center font-medium text-red-600"><i className="fa-solid fa-trash-can"></i> Remove</a>
                                     </td>
                                 </tr>
-    
+
                                 )}
                             </tbody>
                         </table>
-                    </div>    
+                    </div>
                 </div>
-    
+
             </> : <h2 className='text-gray-700 font-bold text-3xl py-44'>Your Wishlist Is Empty</h2>}
-    
-    
-    </>
-           
-    
-    
+
+
+    </>;
+
+
+
 
 }
