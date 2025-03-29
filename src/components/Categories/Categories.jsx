@@ -28,7 +28,7 @@ export default function Categories() {
 
         <div className="text my-4">
             <h1 className='mb-4'>Categories</h1>
-            <span>A category is a product or a business with a distinct identity among consumers</span>
+            <span>Browse by category to discover products that match your interests and needs.</span>
         </div>
 
         <div className="flex justify-evenly items-center flex-wrap gap-2 mt-9">

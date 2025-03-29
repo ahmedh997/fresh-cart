@@ -13,7 +13,7 @@ export default function Products() {
 
         <div className="text my-4">
             <h1 className='mb-4'>Shop All Products</h1>
-            <span>A category is a product or a business with a distinct identity among consumers</span>
+            <span>Explore our wide selection of products across various categories to find exactly what you need.</span>
         </div>
         <RecentProudcts />
 

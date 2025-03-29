@@ -31,8 +31,8 @@ export default function MainSlider() {
 
                 <Slider {...settings}>
                     <img src={slider1} className='w-full md:h-[400px] object-cover' alt="Slider Image" />
-                    <img src={slider1} className='w-full md:h-[400px] object-cover' alt="Slider Image" />
-                    <img src={slider1} className='w-full md:h-[400px] object-cover' alt="Slider Image" />
+                    <img src={slider2} className='w-full md:h-[400px] object-cover' alt="Slider Image" />
+                    <img src={slider3} className='w-full md:h-[400px] object-cover' alt="Slider Image" />
                 </Slider>
 
             </div>

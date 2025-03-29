@@ -43,7 +43,9 @@ const [loading, setloading] = useState(false);
 
             
 
-            <h2 className='py-3 text-center font-bold text-3xl text-black uppercase'>Checkout</h2>
+            <div className="text my-4">
+                <h1 className='mb-4'>Checkout</h1>
+            </div>
 
 
             <form className="max-w-lg mx-auto text-left" onSubmit={formik.handleSubmit}>

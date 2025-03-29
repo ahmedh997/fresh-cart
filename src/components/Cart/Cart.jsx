@@ -84,27 +84,27 @@ export default function Cart() {
             <div className="flex flex-col lg:flex-row w-9/10 gap-5 m-auto mt-9">
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-full flex flex-wrap">
                     <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
-                        <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">
+                        <thead className="text-xs text-gray-700 uppercase bg-gray-50 text-center ">
                             <tr>
                                 <th scope="col" className="px-16 py-3">
                                     <span className="sr-only">Image</span>
                                 </th>
-                                <th scope="col" className="px-6 py-3">
+                                <th scope="col" className=" py-3">
                                     Product
                                 </th>
-                                <th scope="col" className="px-6 py-3">
-                                    Qty
+                                <th scope="col" className=" py-3">
+                                    Quantity
                                 </th>
-                                <th scope="col" className="px-6 py-3">
+                                <th scope="col" className=" py-3">
                                     Price
                                 </th>
-                                <th scope="col" className="px-6 py-3">
+                                <th scope="col" className=" py-3">
                                     Action
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            {cartDetails?.products?.map((product) => <tr key={product?.product?.id} className="bg-white border-b border-gray-200 hover:bg-gray-50 ">
+                            {cartDetails?.products?.map((product) => <tr key={product?.product?.id} className="bg-white border-b border-gray-200 hover:bg-gray-50 text-center">
                                 <td className="p-4">
                                     <img src={product?.product?.imageCover} className="w-16 md:w-32 max-w-full max-h-full" alt={product?.product?.title} />
                                 </td>
@@ -112,7 +112,7 @@ export default function Cart() {
                                     {product?.product?.title}
                                 </td>
                                 <td className="px-6 py-4">
-                                    <div className="flex items-center">
+                                    <div className="flex items-center justify-center">
                                         <button onClick={() => updateCart(product?.product?.id, product?.count - 1)} className="inline-flex items-center justify-center p-1 me-3 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200" type="button">
                                             <span className="sr-only">Quantity button</span>
                                             <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">

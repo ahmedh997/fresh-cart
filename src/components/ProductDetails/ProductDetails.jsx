@@ -141,8 +141,8 @@ export default function ProductDetails() {
                     <StarRating rating={product?.ratingsAverage || 0} />
                 </div>
                 <div className="action-btns flex gap-5">
-                    <button disabled={loading} onClick={() => addProductToCart(product?.id)} className='btn bg-green-500 hover:bg-green-600 text-white rounded-xl px-5 w-1/2'> {loading && selectedProduct == product?.id ? <i className='fas fa-spinner fa-spin'></i> : <><i className='fas fa-cart-plus'></i> <span> Add to Cart</span></>} </button>
-                    <button disabled={loadingWishlist} onClick={() => addProductToWishlist(product?.id)} className='bg-slate-100 hover:bg-slate-200 flex justify-center items-center btn bg-light text-red-700 w-1/2'> {loadingWishlist && selectedWishlist == product?.id ? <i className='fas fa-spinner fa-spin'></i> : <><i className='far fa-heart'> </i> <span> Add To Wishlist</span></>} </button>
+                    <button disabled={loading} onClick={() => addProductToCart(product?.id)} className='bg-green-500 hover:bg-green-600 text-white rounded-xl px-5 w-1/2'> {loading && selectedProduct == product?.id ? <i className='fas fa-spinner fa-spin'></i> : <><i className='fas fa-cart-plus'></i> <span> Add to Cart</span></>} </button>
+                    <button disabled={loadingWishlist} onClick={() => addProductToWishlist(product?.id)} className='bg-slate-100 hover:bg-slate-200 flex justify-center items-center btn bg-light text-red-700 w-1/2'> {loadingWishlist && selectedWishlist == product?.id ? <i className='fas fa-spinner fa-spin'></i> : <><i className='far fa-heart'> </i> <span className='ms-1'> Add To Wishlist</span></>} </button>
                 </div>
 
 
@@ -178,7 +178,7 @@ export default function ProductDetails() {
 
                         <div className="link-cart pb-4 px-2 bg-slate-50">
 
-                            <button onClick={() => addProductToCart(product?.id)} className='btn w-full bg-green-500 hover:bg-green-600 text-white rounded-xl px-5'>
+                            <button disabled={loading} onClick={() => addProductToCart(product?.id)} className='btn w-full bg-green-500 hover:bg-green-600 text-white rounded-xl px-5'>
                                 {loading && selectedProduct == product?.id ? <i className='fas fa-spinner fa-spin'></i> : <span> Add to Cart</span>}
                             </button>
                         </div>
