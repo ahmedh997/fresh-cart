@@ -26,11 +26,15 @@ export default function Categories() {
 
 
 
+        <div className="text my-4">
+            <h1 className='mb-4'>Categories</h1>
+            <span>A category is a product or a business with a distinct identity among consumers</span>
+        </div>
 
-        <div className="flex justify-evenly items-center flex-wrap gap-3 mt-9">
+        <div className="flex justify-evenly items-center flex-wrap gap-2 mt-9">
             {loading ?
 
-                <div className='flex justify-center items-center w-full mt-24  p-16'>
+                <div className='flex justify-center items-center w-full mt-24 p-16'>
                     <ClipLoader size={60} color='#059669' />
                 </div>
                 : <>
@@ -40,10 +44,9 @@ export default function Categories() {
                     {categories?.map((category) =>
 
 
-                        <div key={category?._id} className='m-4'>
-                            <img src={category?.image} className='w-full md:h-[200px] object-cover' alt="Category Image" />
+                        <div key={category?._id} className='w-1/7 border-2 rounded-xl hover:shadow-md'>
+                            <img loading='lazy' src={category?.image} className={' size-52 object-cover m-auto rounded-lg'} alt="Category Image" />
                             <h4 className='my-3 text-slate-700'>{category?.name}</h4>
-
                         </div>)
 
                     } </>}

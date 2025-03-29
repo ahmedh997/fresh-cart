@@ -12,8 +12,8 @@ export default function useProducts() {
     let responseObject = useQuery({
         queryKey: ['recentProducts'],
         queryFn: getRecent,
-        staleTime: 8000,
-        select: (data) => data.data.data
+        staleTime: 800,
+        select: (data) => data?.data?.data
     });
 
     return responseObject;

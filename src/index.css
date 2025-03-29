@@ -17,6 +17,28 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+button:focus{
+  outline: none !important;
+}
+button{
+  border: none;
+}
+
+a:hover{
+  color: #0aad0a !important;
+}
+
+li a.active{
+  color: #0aad0a !important;
+  border-bottom: 2px solid #0aad0a !important;
+  padding: 5px 0;
+}
+
+.unique-icons:focus{
+  color: #0aad0a !important;
+}
+
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -146,3 +168,14 @@ button:focus-visible {
 }
 
 
+@media (max-width: 1023px) {
+  .navbar-menu {
+    background-color: #f7fafc;
+    padding: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links {
+    padding: 0.5rem 0;
+  }
+}

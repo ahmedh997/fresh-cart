@@ -10,11 +10,14 @@ export default function Products() {
         }, []);
     return <>
 
-        <div className='w-[90%] m-auto'>
 
-            <RecentProudcts />
-
+        <div className="text my-4">
+            <h1 className='mb-4'>Shop All Products</h1>
+            <span>A category is a product or a business with a distinct identity among consumers</span>
         </div>
+        <RecentProudcts />
+
+
 
     </>;
 }

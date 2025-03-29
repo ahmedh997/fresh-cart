@@ -12,12 +12,15 @@ export default function Home() {
     <>
 
       
-      <div className='w-[90%] m-auto'>
+      <div className='w-[95%] m-auto'>
 
         <MainSlider />
         <CategorySlider />
 
 
+      </div>
+      <div className="text m-6 p-3 text-left">
+        <h1 className='mb-4'>Shop popular products</h1>
       </div>
       
         <RecentProudcts />  

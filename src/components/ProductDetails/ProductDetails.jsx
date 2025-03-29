@@ -49,7 +49,7 @@ export default function ProductDetails() {
 
         setnumberOfItems(numberOfItems + 1);
         setselectedWishlist(productId);
-        setLoadingWishlist(true)
+        setLoadingWishlist(true);
         let res = await addToWishlist(productId);
         if (res.data.status === 'success') {
             toast.success('Product Added Successfully To Your Wishlist');
@@ -65,18 +65,16 @@ export default function ProductDetails() {
 
 
 
-
     var settings = {
         lazyLoad: true,
         dots: true,
-        dotsClass: "slick-dots slick-thumb",
         infinite: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
-        arrows: false,
+        arrows: true,
     };
 
     function getProduct(id) {
@@ -95,11 +93,28 @@ export default function ProductDetails() {
     function getAllProducts() {
         axios.get('https://ecommerce.routemisr.com/api/v1/products')
             .then((res) => {
-                let related = res.data.data.filter((product) => product?.category?.name == category);
+                let related = res?.data?.data.filter((product) => product?.category?.name == category);
                 setrelatedProduct(related);
 
             });
     }
+
+
+
+    const StarRating = ({ rating }) => {
+        const filledStars = Math.floor(rating);
+        return (
+            <h6>
+                {Array.from({ length: 5 }, (_, i) => (
+                    <i
+                        key={i}
+                        className={`fas fa-star ${i < filledStars ? 'text-yellow-400' : 'text-gray-300'}`}
+                    ></i>
+                ))}
+                {rating}
+            </h6>
+        );
+    };
 
     useEffect(() => {
         getProduct(id);
@@ -108,58 +123,66 @@ export default function ProductDetails() {
 
     return <>
 
-        <div className="row items-center w-[90%] m-auto">
-            <div className="w-full md:w-1/4 my-4">
+        <div className="row items-center w-[90%] m-auto mb-10">
+            <div className="w-full md:w-2/4 my-4">
 
                 <Slider {...settings}>
-                    {product?.images?.map((src) => <img src={src} className='w-full p-3' />)}
+                    {product?.images?.map((src) => <img src={src} className='h-96 object-contain p-3 rounded-lg' />)}
                 </Slider>
             </div>
 
-            <div className="md:w-3/4 m-auto md:m-0 md:text-left p-4 relative">
-
+            <div className="md:w-2/4 m-auto md:m-0 md:text-left p-4 relative">
+                <h5 className='text-black capitalize'>{product?.brand?.name}</h5>
                 <h3 className='text-black font-bold text-3xl capitalize'>{product?.title}</h3>
-                <h4 className='text-gray-600 my-4'>{product?.description}</h4>
-                <h4 className='text-emerald-600 my-4'>{product?.category.name}</h4>
-                <div className="price-rating flex justify-between p-3">
-                    <span className='text-black'>{product?.price}EGP</span>
-                    <span className='text-black'><i className='fas fa-star text-yellow-400'></i> {product?.ratingsAverage}</span>
+                <h4 className='text-gray-600 my-4'><span className='text-black'>Description:</span> {product?.description}</h4>
+                <h4 className='text-emerald-600 my-4'><span className='text-black'>Category:</span> {product?.category.name}</h4>
+                <div className="price-rating flex justify-between py-3">
+                    <span className='text-black'>{product?.price} EGP</span>
+                    <StarRating rating={product?.ratingsAverage || 0} />
                 </div>
-                <button onClick={() => addProductToCart(product?._id)} className='btn bg-emerald-600 text-white rounded-xl px-5 py-2 w-full'>
-                    {loading && selectedProduct == product?._id ? <i className='fas fa-spinner fa-spin'></i> : "Add to Cart"}
-                </button>
-                <button onClick={() => addProductToWishlist(product?._id)} className='btn bg-yellow-600 text-white rounded-xl px-5 py-2 w-full my-3'>
-                    {loadingWishlist && selectedProduct == product?._id ? <i className='fas fa-spinner fa-spin'></i> : "Add to Wishlist"}
+                <div className="action-btns flex gap-5">
+                    <button disabled={loading} onClick={() => addProductToCart(product?.id)} className='btn bg-green-500 hover:bg-green-600 text-white rounded-xl px-5 w-1/2'> {loading && selectedProduct == product?.id ? <i className='fas fa-spinner fa-spin'></i> : <><i className='fas fa-cart-plus'></i> <span> Add to Cart</span></>} </button>
+                    <button disabled={loadingWishlist} onClick={() => addProductToWishlist(product?.id)} className='bg-slate-100 hover:bg-slate-200 flex justify-center items-center btn bg-light text-red-700 w-1/2'> {loadingWishlist && selectedWishlist == product?.id ? <i className='fas fa-spinner fa-spin'></i> : <><i className='far fa-heart'> </i> <span> Add To Wishlist</span></>} </button>
+                </div>
 
-                </button>
 
             </div>
         </div>
 
 
-        <h2 className='font-bold text-2xl text-black'>Related Products</h2>
+        <h2 className='text-3xl mb-5 text-black'>You may also like</h2>
 
-        <div className="row w-[90%] m-auto">
+        <div className="row gap-4 items-center justify-center">
             {relatedProduct?.length > 0 ? relatedProduct?.map((product) => (
-                <div key={product?.id} className='w-full md:w-1/4 lg:w-1/5 xl:w-1/6 mt-5 shadow-lg mx-5 md:mx-0 border-2 md:border-0 md:shadow-none bg-white rounded-lg'>
-                    <div className="product p-5 group overflow-hidden hover:scale-105 hover:border hover:border-1 hover:rounded-lg hover:bg-slate-50 hover:shadow-md transition-all">
+                <div key={product?.id} className='w-full mx-10 md:mx-0 md:w-1/3 lg:w-1/5 shadow-lg md:gap-0 border-2 md:border-0 md:shadow-none bg-white rounded-lg'>
+                    <div className="product group overflow-hidden border border-1 hover:border-emerald-600 rounded-lg shadow-md  transition-all relative">
+                        <button onClick={() => addProductToWishlist(product?.id)} className='opacity-0 bg-slate-50 shadow-md flex justify-center items-center group-hover:opacity-100 btn bg-light text-red-700 rounded-full z-40 size-10 top-4 right-4 absolute'>
+                            {loadingWishlist && selectedWishlist == product?.id ? <i className='fas fa-spinner fa-spin'></i> : <span><i className='far fa-heart'></i></span>}
+                        </button>
+                        <Link to={`/productdetails/${product?.id}/${product?.category?.name}`}>
+                            <div className='overflow-hidden'><img className='size-full md:h-80 object-cover mb-2 md:w-80 m-auto group-hover:scale-105' src={product?.imageCover} alt="Product image" /></div>
 
-                        <Link to={`/productdetails/${product.id}/${product.category.name}`}>
-                            <img className='size-40 object-cover m-auto group-hover:border-2' src={product?.imageCover} alt="Product image" />
-                            <h3 className='text-emerald-500 mt-2 font-light'>{product?.category.name}</h3>
-                            <h3 className='text-black mb-3 font-semibold'>{product?.title.split(' ').slice(0, 2).join(' ')}</h3>
-                            <hr />
-                            <div className='text-black price-rating flex justify-between p-3'>
-                                <span>{product?.price}EGP</span>
-                                <span><i className='fas fa-star text-yellow-400'></i> {product?.ratingsAverage}</span>
+                            <div className="content px-4 py-2 text-left bg-slate-50 border-t-2">
+
+                                <h6 className='text-black font-light my-1 text-sm'>{product?.brand?.name}</h6>
+
+                                <h2 className='text-black font-bold text-md'>{product?.title?.split(' ').slice(0, 3).join(' ')}</h2>
+
+                                <h6 className='text-green-600 mt-2 text-lg'>{product?.price} EGP</h6>
+                                <div className='text-black price-rating'>
+                                    <StarRating rating={product?.ratingsAverage || 0} />
+                                    <h6 className='text-xs'>{product?.ratingsQuantity} Reviews</h6>
+                                </div>
                             </div>
                         </Link>
-                        <button onClick={() => addProductToCart(product?.id)} className='btn bg-emerald-600 text-white rounded-xl px-5 py-2 w-full'>
-                            {loading && selectedProduct == product?.id ? <i className='fas fa-spinner fa-spin'></i> : "Add to Cart"}
-                        </button>
-                        <button onClick={() => addProductToWishlist(product?.id)} className='btn bg-yellow-600 text-white rounded-xl p-2 w-full my-3'>
-                            {loadingWishlist && selectedWishlist == product?.id ? <i className='fas fa-spinner fa-spin'></i> : "Add To Wishlist"}
-                        </button>
+
+                        <div className="link-cart pb-4 px-2 bg-slate-50">
+
+                            <button onClick={() => addProductToCart(product?.id)} className='btn w-full bg-green-500 hover:bg-green-600 text-white rounded-xl px-5'>
+                                {loading && selectedProduct == product?.id ? <i className='fas fa-spinner fa-spin'></i> : <span> Add to Cart</span>}
+                            </button>
+                        </div>
+
 
                     </div>
                 </div>

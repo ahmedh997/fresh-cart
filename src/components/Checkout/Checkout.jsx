@@ -43,7 +43,7 @@ const [loading, setloading] = useState(false);
 
             
 
-            <h2 className='py-3 text-center font-bold text-3xl text-emerald-600 uppercase'>Checkout</h2>
+            <h2 className='py-3 text-center font-bold text-3xl text-black uppercase'>Checkout</h2>
 
 
             <form className="max-w-lg mx-auto text-left" onSubmit={formik.handleSubmit}>
@@ -71,7 +71,7 @@ const [loading, setloading] = useState(false);
 
 
                 <div className='flex items-center'>
-                    <button type="submit" className="text-white w-full bg-emerald-600 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <button type="submit" className="text-white w-full bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
 
                         {loading? <i className='fas fa-spin fa-spinner'></i> :'Checkout'}
                         

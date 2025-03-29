@@ -65,7 +65,7 @@ export default function ForgetPassword() {
                 {apiError}
             </div> : null}
 
-            <h2 className='py-3 text-center font-bold text-3xl text-emerald-600 uppercase'>Reset Your Password</h2>
+            <h2 className='py-3 text-center font-bold text-3xl text-green-500 uppercase'>Reset Your Password</h2>
 
 
             <form className="max-w-lg mx-auto text-left" onSubmit={formik.handleSubmit}>
@@ -84,7 +84,7 @@ export default function ForgetPassword() {
 
 
                 <div className='flex items-center'>
-                    <button type="submit" className="text-white bg-emerald-600 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">
+                    <button type="submit" className="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">
                         {isLoading ? <i className='fas fa-spinner fa-spin'></i> : "Send Code"}
                     </button>
                 </div>
